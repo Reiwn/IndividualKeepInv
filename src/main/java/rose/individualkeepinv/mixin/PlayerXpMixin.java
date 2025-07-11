@@ -14,7 +14,7 @@ public abstract class PlayerXpMixin {
     @Inject(method = "getExperienceToDrop", at = @At("HEAD"), cancellable = true)
     public void onGetExperienceToDrop(CallbackInfoReturnable<Integer> info) {
         PlayerEntity player = ((PlayerEntity) (Object) this); // Getting the "this" instance in the PlayerEntity class
-        if (player.getName().getString()=="NotDrop" || player.isSpectator()) {
+        if (player.getName().getString().equals("NotDrop") || player.isSpectator()) {
             info.setReturnValue(0);
         }
         else {

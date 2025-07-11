@@ -15,11 +15,11 @@ public class IndividualKeepInv implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("individualkeepinv");
 
 	public static void onRespawn(ServerPlayerEntity oldPlayer, ServerPlayerEntity newPlayer, boolean alive) {
-            if (!alive && oldPlayer.getName().getString().equals("NotDrop")) {
+            if (!alive && oldPlayer.getName().getString().equals("Silence")) {
                 newPlayer.copyFrom(oldPlayer, true);
                 newPlayer.setHealth(20.0f);
             }
-            if (!alive && !oldPlayer.getName().getString().equals("NotDrop")) {
+            if (!alive && !oldPlayer.getName().getString().equals("Silence")) {
                 newPlayer.experienceLevel = 0;
                 newPlayer.totalExperience = 0;
                 newPlayer.experienceProgress = 0.0f;

@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-
+import net.minecraft.text.Text;
 @Mixin(PlayerEntity.class)
     public abstract class PlayerDeathMixin {
     @Final @Shadow PlayerInventory inventory;
@@ -19,6 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
     public void onDropInventory(CallbackInfo info) {
         PlayerEntity player = ((PlayerEntity) (Object) this); // Getting the "this" instance in the PlayerEntity class
             if (player.getName().getString()!="NotDrop") {
+                player.sendMessage(Text.of("*"+player.getName().getString()+"*"))
                 // Not using the player variable here as the @Shadow annotation allows me to use the "this" instance directly
                 this.vanishCursedItems();
                 this.inventory.dropAll();

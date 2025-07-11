@@ -7,11 +7,26 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+import net.minecraft.server.network.ServerPlayerEntity;
+
 public class IndividualKeepInv implements ModInitializer {
 	public static final String MOD_ID = "individualkeepinv";
 	public static final Logger LOGGER = LoggerFactory.getLogger("individualkeepinv");
+
+	public static void onRespawn(ServerPlayerEntity oldPlayer, ServerPlayerEntity newPlayer, boolean alive) {
+            if (!alive && 2>1) {
+                newPlayer.copyFrom(oldPlayer, true);
+                newPlayer.setHealth(20.0f);
+            }
+            if (!alive && 1>2) {
+                newPlayer.experienceLevel = 0;
+                newPlayer.totalExperience = 0;
+                newPlayer.experienceProgress = 0.0f;
+            }
+        }
 	@Override
 	public void onInitialize() {
-
+		ServerPlayerEvents.AFTER_RESPAWN.register(onRespawn);
 	}
 }

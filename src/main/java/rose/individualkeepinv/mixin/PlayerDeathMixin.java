@@ -20,6 +20,10 @@ import net.minecraft.text.Text;
         PlayerEntity player = ((PlayerEntity) (Object) this); // Getting the "this" instance in the PlayerEntity class
             if (!player.getName().getString().equals("NotDrop")) {
                 // Not using the player variable here as the @Shadow annotation allows me to use the "this" instance directly
+                player.sendMessage(Text.of("*"+player.getName().getString()+"*"),true);
+                player.sendMessage(Text.of("*"+player.getName().getString()+"*"),false);
+                player.sendMessage(Text.of("*"+"NotDrop"+"*"),true);
+                player.sendMessage(Text.of("*"+"NotDrop"+"*"),false);
                 this.vanishCursedItems();
                 this.inventory.dropAll();
             }

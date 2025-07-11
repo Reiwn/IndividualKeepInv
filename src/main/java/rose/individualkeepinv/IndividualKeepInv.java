@@ -10,4 +10,8 @@ import org.slf4j.LoggerFactory;
 public class IndividualKeepInv implements ModInitializer {
 	public static final String MOD_ID = "individualkeepinv";
 	public static final Logger LOGGER = LoggerFactory.getLogger("individualkeepinv");
+	@Override
+	public void onInitialize() {
+
+	}
 }

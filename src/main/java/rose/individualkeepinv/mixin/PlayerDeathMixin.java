@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static rose.individualkeepinv.KeepInvMap.kim;
 
 @Mixin(PlayerEntity.class)
     public abstract class PlayerDeathMixin {
@@ -19,7 +18,7 @@ import static rose.individualkeepinv.KeepInvMap.kim;
     @Inject(method = "dropInventory", at = @At("HEAD"), cancellable = true)
     public void onDropInventory(CallbackInfo info) {
         PlayerEntity player = ((PlayerEntity) (Object) this); // Getting the "this" instance in the PlayerEntity class
-            if (!kim.invStateMap.get(player.getUuid())) {
+            if (!player.getName()=="NotDrop") {
                 // Not using the player variable here as the @Shadow annotation allows me to use the "this" instance directly
                 this.vanishCursedItems();
                 this.inventory.dropAll();

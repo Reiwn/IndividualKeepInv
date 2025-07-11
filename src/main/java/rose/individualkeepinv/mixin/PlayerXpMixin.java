@@ -7,13 +7,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 
+
 @Mixin(PlayerEntity.class)
 public abstract class PlayerXpMixin {
 
     @Inject(method = "getExperienceToDrop", at = @At("HEAD"), cancellable = true)
     public void onGetExperienceToDrop(CallbackInfoReturnable<Integer> info) {
         PlayerEntity player = ((PlayerEntity) (Object) this); // Getting the "this" instance in the PlayerEntity class
-        if (player.getName()=="NotDrop" || player.isSpectator()) {
+        if (player.getName().getString()=="NotDrop" || player.isSpectator()) {
             info.setReturnValue(0);
         }
         else {

@@ -27,6 +27,6 @@ public class IndividualKeepInv implements ModInitializer {
         }
 	@Override
 	public void onInitialize() {
-		ServerPlayerEvents.AFTER_RESPAWN.register(onRespawn);
+		ServerPlayerEvents.AFTER_RESPAWN.register(IndividualKeepInv::onRespawn);
 	}
 }

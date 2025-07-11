@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
     @Inject(method = "dropInventory", at = @At("HEAD"), cancellable = true)
     public void onDropInventory(CallbackInfo info) {
         PlayerEntity player = ((PlayerEntity) (Object) this); // Getting the "this" instance in the PlayerEntity class
-            if (!player.getName().getString()=="NotDrop") {
+            if (player.getName().getString() != "NotDrop") {
                 // Not using the player variable here as the @Shadow annotation allows me to use the "this" instance directly
                 this.vanishCursedItems();
                 this.inventory.dropAll();

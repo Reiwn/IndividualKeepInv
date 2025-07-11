@@ -10,13 +10,4 @@ import org.slf4j.LoggerFactory;
 public class IndividualKeepInv implements ModInitializer {
 	public static final String MOD_ID = "individualkeepinv";
 	public static final Logger LOGGER = LoggerFactory.getLogger("individualkeepinv");
-
-	@Override
-	public void onInitialize() {
-		ServerPlayConnectionEvents.JOIN.register(KeepInvMap::onJoin);
-
-		ServerPlayerEvents.AFTER_RESPAWN.register(KeepInvMap::onRespawn);
-
-		CommandRegistrationCallback.EVENT.register(IKeepInvCommand::commandLogic);
-	}
 }
